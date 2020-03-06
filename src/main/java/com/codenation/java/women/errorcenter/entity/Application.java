@@ -22,12 +22,10 @@ public class Application {
     private User user_id;
 
     @Column
-    @NotNull
     @Size(max = 50)
     private String app_name;
 
     @Column
-    @NotNull
     @Size(max = 200)
     private String description;
 

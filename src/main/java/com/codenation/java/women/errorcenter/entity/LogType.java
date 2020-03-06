@@ -19,17 +19,14 @@ public class LogType {
     private User log_id;
 
     @Column
-    @NotNull
     @Size(max = 80)
     private String title;
 
     @Column
-    @NotNull
     @Size(max = 50)
     private String error_level;
 
     @Column
-    @NotNull
     @Size(max = 200)
     private String description;
 }

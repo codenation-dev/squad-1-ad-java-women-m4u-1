@@ -26,7 +26,6 @@ public class Log {
     private Date date;
 
     @Column
-    @NotNull
     @Size(max = 50)
     private String enviroment;
 

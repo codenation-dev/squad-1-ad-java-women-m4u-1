@@ -5,7 +5,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,23 +19,19 @@ public class User {
     private Long user_id;
 
     @Column
-    @NotNull
     @Size(max = 150)
     private String name;
 
     @Column
-    @NotNull
     @Size(max = 100)
     private String token;
 
     @Column
     @Email
     @Size(max = 80)
-    @NotNull
     private String email;
 
     @Column
-    @NotNull
     @Size(max = 255)
     private String password;
 
