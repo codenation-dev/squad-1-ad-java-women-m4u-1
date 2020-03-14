@@ -45,17 +45,11 @@ public class Application {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Application that = (Application) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(user_id, that.user_id) &&
-                Objects.equals(app_name, that.app_name) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(createdAt, that.createdAt) &&
-                Objects.equals(users, that.users) &&
-                Objects.equals(logs, that.logs);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user_id, app_name, description, createdAt, users, logs);
+        return Objects.hash(id);
     }
 }

@@ -42,16 +42,11 @@ public class Log {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Log log = (Log) o;
-        return Objects.equals(id, log.id) &&
-                Objects.equals(app_id, log.app_id) &&
-                Objects.equals(date, log.date) &&
-                Objects.equals(enviroment, log.enviroment) &&
-                Objects.equals(createdAt, log.createdAt) &&
-                Objects.equals(logTypes, log.logTypes);
+        return Objects.equals(id, log.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, app_id, date, enviroment, createdAt, logTypes);
+        return Objects.hash(id);
     }
 }
