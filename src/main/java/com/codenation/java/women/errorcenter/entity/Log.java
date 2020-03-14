@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -35,4 +36,22 @@ public class Log {
 
     @OneToMany
     private List<LogType> logTypes;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Log log = (Log) o;
+        return Objects.equals(id, log.id) &&
+                Objects.equals(app_id, log.app_id) &&
+                Objects.equals(date, log.date) &&
+                Objects.equals(enviroment, log.enviroment) &&
+                Objects.equals(createdAt, log.createdAt) &&
+                Objects.equals(logTypes, log.logTypes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, app_id, date, enviroment, createdAt, logTypes);
+    }
 }

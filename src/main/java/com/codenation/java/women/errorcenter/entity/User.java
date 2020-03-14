@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -41,4 +42,23 @@ public class User {
 
     @ManyToMany
     private List<Application> applications;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(user_id, user.user_id) &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(token, user.token) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(createdAt, user.createdAt) &&
+                Objects.equals(applications, user.applications);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user_id, name, token, email, password, createdAt, applications);
+    }
 }
