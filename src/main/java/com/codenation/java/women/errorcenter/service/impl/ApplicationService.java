@@ -1,14 +1,15 @@
 package com.codenation.java.women.errorcenter.service.impl;
 
-import com.codenation.java.women.errorcenter.dto.ApplicationDTO;
-import com.codenation.java.women.errorcenter.dto.UserDTO;
+import com.codenation.java.women.errorcenter.entity.Application;
 import com.codenation.java.women.errorcenter.repository.ApplicationRepository;
 import com.codenation.java.women.errorcenter.service.interfaces.ApplicationServiceInterface;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+@Service("applicationService")
 public class ApplicationService implements ApplicationServiceInterface {
 
     private final ApplicationRepository repository;
@@ -18,35 +19,45 @@ public class ApplicationService implements ApplicationServiceInterface {
     }
 
     @Override
-    public List<ApplicationDTO> findAll() {
+    public List<Application> get() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<ApplicationDTO> findById(Long id) {
+    public Optional<Application> get(Long id) {
         return repository.findById(id);
     }
 
     @Override
-    public Optional<ApplicationDTO> save(ApplicationDTO application) {
-        return repository.save(Optional.ofNullable(application));
-    }
-
-    @Override
-    public Optional<ApplicationDTO> update(ApplicationDTO newApplication, Long id) {
-        Optional<ApplicationDTO> application = repository.findById(id);
+    public Application save(Application application) {
         return repository.save(application);
     }
 
     @Override
+    public Optional<Application> update(Application newApplication, Long id) {
+        return repository.findById(id).
+                map(application -> {
+                    setIfNotNull(application::setAppName, newApplication.getAppName());
+                    setIfNotNull(application::setDescription, newApplication.getDescription());
+                    setIfNotNull(application::setLogs, newApplication.getLogs());
+                    setIfNotNull(application::setUsers, newApplication.getUsers());
+                    setIfNotNull(application::setUserId, newApplication.getUserId());
+                    setIfNotNull(application::setCreatedAt, newApplication.getCreatedAt());
+
+                    return repository.save(application);
+                });
+    }
+
+    @Override
     public void deleteByID(Long id) {
-        Optional<ApplicationDTO> application = findById(id);
+        Optional<Application> application = get(id);
 
         if(!application.isPresent()) {
             repository.deleteById(id);
-        } else {
-            //throw new PessoaNotFoundException(id);
         }
+//        else {
+//            throw  new ApplicationNotFoundException(id);
+//        }
     }
 
     private <T> void setIfNotNull(final Consumer<T> setter, final T value) {

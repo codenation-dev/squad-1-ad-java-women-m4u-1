@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "logtype")
+@Table(name = "logType")
 public class LogType {
 
     @Id
@@ -17,7 +17,7 @@ public class LogType {
     private Long id;
 
     @JoinColumn(name = "id")
-    private User log_id;
+    private User logId;
 
     @Column
     @Size(max = 80)
@@ -30,6 +30,46 @@ public class LogType {
     @Column
     @Size(max = 200)
     private String description;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getLogId() {
+        return logId;
+    }
+
+    public void setLogId(User logId) {
+        this.logId = logId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getError_level() {
+        return error_level;
+    }
+
+    public void setError_level(String error_level) {
+        this.error_level = error_level;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
     public boolean equals(Object o) {

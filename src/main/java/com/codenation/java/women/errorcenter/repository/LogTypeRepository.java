@@ -1,23 +1,7 @@
 package com.codenation.java.women.errorcenter.repository;
 
-import com.codenation.java.women.errorcenter.dto.LogTypeDTO;
+import com.codenation.java.women.errorcenter.entity.LogType;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-import java.util.Optional;
-
-public class LogTypeRepository {
-    public List<LogTypeDTO> findAll() {
-        return null;
-    }
-
-    public Optional<LogTypeDTO> findById(Long id) {
-        return null;
-    }
-
-    public Optional<LogTypeDTO> save(Optional<LogTypeDTO> logType) {
-        return null;
-    }
-
-    public void deleteById(Long id) {
-    }
+public interface LogTypeRepository extends JpaRepository<LogType, Long> {
 }

@@ -11,7 +11,7 @@ public class UserDTO {
 
     private Long user_id;
 
-    @NotNull(message = "Um nome deve ser informado.")
+    @NotNull(message = "Um usuario deve ser informado.")
     private String name;
 
     private String token;

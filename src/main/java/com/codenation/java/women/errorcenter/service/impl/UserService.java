@@ -1,6 +1,6 @@
 package com.codenation.java.women.errorcenter.service.impl;
 
-import com.codenation.java.women.errorcenter.dto.UserDTO;
+import com.codenation.java.women.errorcenter.entity.User;
 import com.codenation.java.women.errorcenter.repository.UserRepository;
 import com.codenation.java.women.errorcenter.service.interfaces.UserServiceInterface;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-@Service
+@Service("userService")
 public class UserService implements UserServiceInterface {
 
     private final UserRepository repository;
@@ -19,40 +19,49 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
-    public List<UserDTO> findAll() {
+    public List<User> get() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<UserDTO> findById(Long id) {
+    public Optional<User> get(Long id) {
         return repository.findById(id);
     }
 
     @Override
-    public Optional<UserDTO> save(UserDTO user) {
-        return repository.save(Optional.ofNullable(user));
-    }
-
-    @Override
-    public Optional<UserDTO> update(UserDTO newUser, Long id) {
-        Optional<UserDTO> user = repository.findById(id);
+    public User save(User user) {
         return repository.save(user);
     }
 
     @Override
+    public Optional<User> update(User newUser, Long id) {
+        return repository.findById(id).
+                map(user -> {
+                    setIfNotNull(user::setName, newUser.getName());
+                    setIfNotNull(user::setEmail, newUser.getEmail());
+                    setIfNotNull(user::setPassword, newUser.getPassword());
+
+                    return repository.save(user);
+                });
+    }
+
+    @Override
     public void deleteByID(Long id) {
-        Optional<UserDTO> user = findById(id);
+        Optional<User> user = get(id);
 
         if(!user.isPresent()) {
             repository.deleteById(id);
-        } else {
-            //throw new PessoaNotFoundException(id);
         }
+//        else {
+//            throw new UserNotFoundException(id);
+//        }
     }
 
-    private <T> void setIfNotNull(final Consumer<T> setter, final T value) {
+    private <T, voi> void setIfNotNull(final Consumer<T> setter, final T value) {
         if (value != null) {
             setter.accept(value);
         }
     }
 }
+
+
