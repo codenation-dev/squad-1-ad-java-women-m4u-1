@@ -15,6 +15,7 @@ public class ApplicationRepository {
     }
 
     public void deleteById(Long id) {
+        Boolean test;
     }
 
     public Optional<ApplicationDTO> save(Optional<ApplicationDTO> application) {
