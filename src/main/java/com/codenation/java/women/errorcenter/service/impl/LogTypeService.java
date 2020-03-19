@@ -38,7 +38,6 @@ public class LogTypeService implements LogTypeServiceInterface {
                     setIfNotNull(logType::setTitle, newLogType.getTitle());
                     setIfNotNull(logType::setDescription, newLogType.getDescription());
                     setIfNotNull(logType::setError_level, newLogType.getError_level());
-                    setIfNotNull(logType::setUser_id, newLogType.getUser_id());
 
                     return repository.save(logType);
                 });

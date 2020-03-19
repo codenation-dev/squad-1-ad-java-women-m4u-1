@@ -7,12 +7,14 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -40,8 +42,13 @@ public class User {
     @CreatedDate
     private LocalDateTime createdAt;
 
-    @ManyToMany
-    private List<Application> applications;
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "users")
+    private Set<Application> applications = new HashSet<>();
 
     public Long getUser_id() {
         return user_id;
@@ -91,18 +98,18 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public List<Application> getApplications() {
+    public Set<Application> getApplications() {
         return applications;
     }
 
-    public void setApplications(List<Application> applications) {
+    public void setApplications(Set<Application> applications) {
         this.applications = applications;
     }
 
     public User() {
     }
 
-    public User(String name, String token, String email, String password, LocalDateTime createdAt, List<Application> applications) {
+    public User(String name, String token, String email, String password, LocalDateTime createdAt, Set<Application> applications) {
         this.name = name;
         this.token = token;
         this.email = email;
