@@ -38,7 +38,7 @@ public class LogService implements LogServiceInterface {
                     //setIfNotNull(log::setAppId, newLog.getAppId());
                     setIfNotNull(log::setCreatedAt, newLog.getCreatedAt());
                     setIfNotNull(log::setEnviroment, newLog.getEnviroment());
-                    setIfNotNull(log::setLogTypes, newLog.getLogTypes());
+                    setIfNotNull(log::setLogType, newLog.getLogType());
                     setIfNotNull(log::setDate, newLog.getDate());
 
                     return repository.save(log);
