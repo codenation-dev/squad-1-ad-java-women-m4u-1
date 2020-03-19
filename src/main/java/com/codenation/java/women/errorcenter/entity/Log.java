@@ -20,8 +20,9 @@ public class Log {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "id")
-    private Application app_id;
+    @ManyToOne
+    @JoinColumn(name = "id", insertable = false, updatable = false)
+    private Application appId;
 
     @Column
     private Date date;
@@ -36,6 +37,54 @@ public class Log {
 
     @OneToMany
     private List<LogType> logTypes;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Application getAppId() {
+        return appId;
+    }
+
+    public void setAppId(Application appId) {
+        this.appId = appId;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getEnviroment() {
+        return enviroment;
+    }
+
+    public void setEnviroment(String enviroment) {
+        this.enviroment = enviroment;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public List<LogType> getLogTypes() {
+        return logTypes;
+    }
+
+    public void setLogTypes(List<LogType> logTypes) {
+        this.logTypes = logTypes;
+    }
 
     @Override
     public boolean equals(Object o) {

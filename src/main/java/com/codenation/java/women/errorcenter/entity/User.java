@@ -43,6 +43,74 @@ public class User {
     @ManyToMany
     private List<Application> applications;
 
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public List<Application> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
+    }
+
+    public User() {
+    }
+
+    public User(String name, String token, String email, String password, LocalDateTime createdAt, List<Application> applications) {
+        this.name = name;
+        this.token = token;
+        this.email = email;
+        this.password = password;
+        this.createdAt = createdAt;
+        this.applications = applications;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

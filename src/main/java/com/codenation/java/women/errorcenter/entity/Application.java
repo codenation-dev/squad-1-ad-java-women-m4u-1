@@ -4,7 +4,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,12 +18,13 @@ public class Application {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user_id;
+    private User userId;
 
     @Column
     @Size(max = 50)
-    private String app_name;
+    private String appName;
 
     @Column
     @Size(max = 200)
@@ -39,6 +39,62 @@ public class Application {
 
     @OneToMany
     private List<Log> logs;
+
+    public Long getId() {
+        return id;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public List<Log> getLogs() {
+        return logs;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public void setLogs(List<Log> logs) {
+        this.logs = logs;
+    }
 
     @Override
     public boolean equals(Object o) {
