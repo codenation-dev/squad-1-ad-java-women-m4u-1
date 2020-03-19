@@ -99,6 +99,18 @@ public class User {
         this.applications = applications;
     }
 
+    public User() {
+    }
+
+    public User(String name, String token, String email, String password, LocalDateTime createdAt, List<Application> applications) {
+        this.name = name;
+        this.token = token;
+        this.email = email;
+        this.password = password;
+        this.createdAt = createdAt;
+        this.applications = applications;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

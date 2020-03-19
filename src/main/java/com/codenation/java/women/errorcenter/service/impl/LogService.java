@@ -35,7 +35,7 @@ public class LogService implements LogServiceInterface {
     public Optional<Log> update(Log newLog, Long id) {
         return repository.findById(id).
                 map( log -> {
-                    setIfNotNull(log::setAppId, newLog.getAppId());
+                    //setIfNotNull(log::setAppId, newLog.getAppId());
                     setIfNotNull(log::setCreatedAt, newLog.getCreatedAt());
                     setIfNotNull(log::setEnviroment, newLog.getEnviroment());
                     setIfNotNull(log::setLogTypes, newLog.getLogTypes());

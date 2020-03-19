@@ -20,7 +20,8 @@ public class Log {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "id")
+    @ManyToOne
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     private Application appId;
 
     @Column

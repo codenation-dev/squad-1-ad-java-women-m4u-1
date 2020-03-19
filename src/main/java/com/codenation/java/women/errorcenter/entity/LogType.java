@@ -16,8 +16,9 @@ public class LogType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "id")
-    private User logId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user_id;
 
     @Column
     @Size(max = 80)
@@ -39,12 +40,12 @@ public class LogType {
         this.id = id;
     }
 
-    public User getLogId() {
-        return logId;
+    public User getUser_id() {
+        return user_id;
     }
 
-    public void setLogId(User logId) {
-        this.logId = logId;
+    public void setUser_id(User user_id) {
+        this.user_id = user_id;
     }
 
     public String getTitle() {
