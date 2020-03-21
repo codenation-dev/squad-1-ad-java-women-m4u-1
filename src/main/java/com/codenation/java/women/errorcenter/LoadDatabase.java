@@ -20,10 +20,10 @@ public class LoadDatabase {
         List<Application> applications = new ArrayList<Application>();
 
         return args -> {
-            repository.save(new User("Ágatha Serafim", "XXXXXXXXX", "agathamariana@gmail.com", "123", localDate, applications));
-            repository.save(new User("Julia Kastrup", "YYYYYYYY", "juliakastrup@gmail.com", "456", localDate, applications));
-            repository.save(new User("Julia Paranhos", "WWWWWWWWW", "juliaparanhos@gmail.com", "789", localDate, applications));
-            repository.save(new User("Natália Viveiros", "KKKKKKKKK", "nataliaviveiros@gmail.com", "999", localDate, applications));
+            repository.save(new User("Ágatha Serafim", "agathamariana@gmail.com", "123", localDate, applications));
+            repository.save(new User("Julia Kastrup", "juliakastrup@gmail.com", "456", localDate, applications));
+            repository.save(new User("Julia Paranhos", "juliaparanhos@gmail.com", "789", localDate, applications));
+            repository.save(new User("Natália Viveiros", "nataliaviveiros@gmail.com", "999", localDate, applications));
         };
     }
 

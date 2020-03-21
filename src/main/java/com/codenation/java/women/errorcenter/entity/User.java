@@ -29,10 +29,6 @@ public class User implements UserDetails {
     private String name;
 
     @Column
-    @Size(max = 100)
-    private String token;
-
-    @Column
     @Email
     @Size(max = 80)
     private String email;
@@ -62,14 +58,6 @@ public class User implements UserDetails {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public String getEmail() {
@@ -137,9 +125,8 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String name, String token, String email, String password, LocalDateTime createdAt, List<Application> applications) {
+    public User(String name, String email, String password, LocalDateTime createdAt, List<Application> applications) {
         this.name = name;
-        this.token = token;
         this.email = email;
         this.password = password;
         this.createdAt = createdAt;
