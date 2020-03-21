@@ -15,12 +15,16 @@ import java.util.List;
 public class LoadDatabase {
 
     @Bean
-    CommandLineRunner initDatabase(UserRepository repository) {
+    CommandLineRunner initDatabaseUser(UserRepository repository) {
         LocalDateTime localDate      = LocalDateTime.now();
         List<Application> applications = new ArrayList<Application>();
 
         return args -> {
-            repository.save(new User("Ágatha Serafim", "XXXXXXXXX", "agathamariana@gmail.com", "teste", localDate, applications));
+            repository.save(new User("Ágatha Serafim", "XXXXXXXXX", "agathamariana@gmail.com", "123", localDate, applications));
+            repository.save(new User("Julia Kastrup", "YYYYYYYY", "juliakastrup@gmail.com", "456", localDate, applications));
+            repository.save(new User("Julia Paranhos", "WWWWWWWWW", "juliaparanhos@gmail.com", "789", localDate, applications));
+            repository.save(new User("Natália Viveiros", "KKKKKKKKK", "nataliaviveiros@gmail.com", "999", localDate, applications));
         };
     }
+
 }
