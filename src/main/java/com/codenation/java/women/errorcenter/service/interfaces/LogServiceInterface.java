@@ -10,6 +10,6 @@ public interface LogServiceInterface {
     List<Log> get();
     Optional<Log> get(Long id);
     Log save(Log log);
-    Optional<User> update(User user, Long id);
+    Optional<Log> update(Log log, Long id);
     void deleteByID(Long id);
 }
