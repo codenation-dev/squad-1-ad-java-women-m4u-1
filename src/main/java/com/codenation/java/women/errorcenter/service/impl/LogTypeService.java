@@ -1,13 +1,16 @@
 package com.codenation.java.women.errorcenter.service.impl;
 
 import com.codenation.java.women.errorcenter.entity.LogType;
+import com.codenation.java.women.errorcenter.exception.LogTypeNotFoundException;
 import com.codenation.java.women.errorcenter.repository.LogTypeRepository;
 import com.codenation.java.women.errorcenter.service.interfaces.LogTypeServiceInterface;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+@Service("logTypeService")
 public class LogTypeService implements LogTypeServiceInterface {
 
     private final LogTypeRepository repository;
@@ -50,9 +53,9 @@ public class LogTypeService implements LogTypeServiceInterface {
         if(!logType.isPresent()) {
             repository.deleteById(id);
         }
-//        else {
-//            throw new LogTypeNotFoundException(id);
-//        }
+        else {
+            throw new LogTypeNotFoundException(id);
+        }
     }
 
     private <T> void setIfNotNull(final Consumer<T> setter, final T value) {

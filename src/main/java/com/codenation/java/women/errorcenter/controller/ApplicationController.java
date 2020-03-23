@@ -2,6 +2,7 @@ package com.codenation.java.women.errorcenter.controller;
 
 
 import com.codenation.java.women.errorcenter.dto.ApplicationDTO;
+import com.codenation.java.women.errorcenter.dto.LogTypeDTO;
 import com.codenation.java.women.errorcenter.dto.MessageDTO;
 import com.codenation.java.women.errorcenter.entity.Application;
 import com.codenation.java.women.errorcenter.exception.ApplicationNotFoundException;
@@ -29,7 +30,7 @@ class ApplicationController {
     @ApiResponses({
             @ApiResponse(code = 200, message = "Aplicações encontradas")
     })
-    @GetMapping("/errorcenter/applications")
+    @GetMapping("/api/v1/applications")
     List<Application> getApplication() {
         return applicationServiceInterface.get();
     }
@@ -39,7 +40,7 @@ class ApplicationController {
             @ApiResponse(code = 200, message = "Aplicação encontrada", response = ApplicationDTO.class),
             @ApiResponse(code = 404, message = "Aplicação não encontrada", response = MessageDTO.class)
     })
-    @GetMapping("/api/v1/pessoas/{id}")
+    @GetMapping("/api/v1/applications/{id}")
     ResponseEntity<Application> one(@PathVariable Long id) {
         return applicationServiceInterface.get(id)
                 .map(pessoa -> ResponseEntity.ok().body(pessoa))
@@ -52,20 +53,22 @@ class ApplicationController {
             @ApiResponse(code = 201, message = "Aplicação criada com sucesso", response = ApplicationDTO.class),
             @ApiResponse(code = 404, message = "Aplicação não encontrada", response = MessageDTO.class)
     })
-    @PostMapping("/api/v1/pessoas")
+    @PostMapping("/api/v1/applications")
     Application newApplication(@Valid @RequestBody ApplicationDTO application) {
         return applicationServiceInterface.save(new ModelMapper().map(application, Application.class));
     }
 
-    @ApiOperation(value = "Altera uma aplicação")
+    @ApiOperation(value = "Altera uma application")
     @ApiResponses({
-            @ApiResponse(code = 200, message = "Application criada com sucesso", response = ApplicationDTO.class),
-            @ApiResponse(code = 404, message = "Application não encontrada", response = MessageDTO.class)
+            @ApiResponse(code = 200, message = "LogType criada com sucesso", response = ApplicationDTO.class),
+            @ApiResponse(code = 404, message = "LogType não encontrada", response = MessageDTO.class)
     })
-    @PutMapping("/errorcenter/application/{id}")
+    @PutMapping("/api/v1/applications/{id}")
     Application updateApplication(@RequestBody ApplicationDTO updatedApplication, @PathVariable Long id) {
         return applicationServiceInterface.update(new ModelMapper()
                 .map(updatedApplication, Application.class), id)
-                .orElseThrow(() -> { throw new ApplicationNotFoundException(id); });
+                .orElseThrow(() -> new ApplicationNotFoundException(id));
     }
+
+
 }

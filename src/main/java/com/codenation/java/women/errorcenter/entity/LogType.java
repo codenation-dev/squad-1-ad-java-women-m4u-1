@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "logType")
+@Table(name = "logTypes")
 public class LogType {
 
     @Id
@@ -18,7 +18,9 @@ public class LogType {
     private Long id;
 
     @Column
-    @Size(max = 80)
+    @Size(max = 80)/errorcenter/
+/errorcenter/
+/errorcenter/
     private String title;
 
     @Column
