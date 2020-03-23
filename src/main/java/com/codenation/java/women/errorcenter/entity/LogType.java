@@ -18,9 +18,7 @@ public class LogType {
     private Long id;
 
     @Column
-    @Size(max = 80)/errorcenter/
-/errorcenter/
-/errorcenter/
+    @Size(max = 80)
     private String title;
 
     @Column
