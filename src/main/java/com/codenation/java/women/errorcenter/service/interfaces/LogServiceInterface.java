@@ -1,6 +1,7 @@
 package com.codenation.java.women.errorcenter.service.interfaces;
 
 import com.codenation.java.women.errorcenter.entity.Log;
+import com.codenation.java.women.errorcenter.entity.User;
 
 import java.util.List;
 import java.util.Optional;

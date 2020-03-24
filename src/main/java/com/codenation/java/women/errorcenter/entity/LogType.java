@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "logType")
+@Table(name = "logTypes")
 public class LogType {
 
     @Id

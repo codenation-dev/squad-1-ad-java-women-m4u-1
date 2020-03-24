@@ -14,7 +14,7 @@ import java.util.Objects;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "logs")
-public class Log {
+public class Log extends User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

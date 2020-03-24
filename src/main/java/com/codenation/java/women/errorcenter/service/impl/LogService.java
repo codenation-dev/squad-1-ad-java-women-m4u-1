@@ -1,13 +1,16 @@
 package com.codenation.java.women.errorcenter.service.impl;
 
 import com.codenation.java.women.errorcenter.entity.Log;
+import com.codenation.java.women.errorcenter.entity.User;
 import com.codenation.java.women.errorcenter.repository.LogRepository;
 import com.codenation.java.women.errorcenter.service.interfaces.LogServiceInterface;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+@Service("logService")
 public class LogService implements LogServiceInterface {
 
     private final LogRepository repository;
@@ -31,11 +34,15 @@ public class LogService implements LogServiceInterface {
         return repository.save(log);
     }
 
-    @Override
+
+    public Optional<User> update(User user, Long id) {
+        return Optional.empty();
+    }
+
     public Optional<Log> update(Log newLog, Long id) {
         return repository.findById(id).
                 map( log -> {
-                    //setIfNotNull(log::setAppId, newLog.getAppId());
+                    setIfNotNull(log::setAppId, newLog.getAppId());
                     setIfNotNull(log::setCreatedAt, newLog.getCreatedAt());
                     setIfNotNull(log::setEnviroment, newLog.getEnviroment());
                     setIfNotNull(log::setLogType, newLog.getLogType());
