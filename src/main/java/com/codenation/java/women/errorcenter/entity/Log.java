@@ -13,7 +13,7 @@ import java.util.Objects;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "log")
+@Table(name = "logs")
 public class Log {
 
     @Id
@@ -21,7 +21,7 @@ public class Log {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "applications_id", insertable = false, updatable = false)
     private Application appId;
 
     @Column
@@ -35,8 +35,9 @@ public class Log {
     @CreatedDate
     private LocalDateTime createdAt;
 
-    @OneToMany
-    private List<LogType> logTypes;
+    @ManyToOne
+    @JoinColumn(name = "logtype_id")
+    private Log logType;
 
     public Long getId() {
         return id;
@@ -78,12 +79,12 @@ public class Log {
         this.createdAt = createdAt;
     }
 
-    public List<LogType> getLogTypes() {
-        return logTypes;
+    public Log getLogType() {
+        return logType;
     }
 
-    public void setLogTypes(List<LogType> logTypes) {
-        this.logTypes = logTypes;
+    public void setLogType(Log logType) {
+        this.logType = logType;
     }
 
     @Override

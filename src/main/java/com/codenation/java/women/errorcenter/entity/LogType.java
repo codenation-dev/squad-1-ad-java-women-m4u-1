@@ -5,6 +5,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,10 +16,6 @@ public class LogType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user_id;
 
     @Column
     @Size(max = 80)
@@ -32,20 +29,15 @@ public class LogType {
     @Size(max = 200)
     private String description;
 
+    @OneToMany(mappedBy = "logType", cascade = CascadeType.ALL)
+    private List<Log> logs;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public User getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(User user_id) {
-        this.user_id = user_id;
     }
 
     public String getTitle() {
@@ -70,6 +62,14 @@ public class LogType {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Log> getLogs() {
+        return logs;
+    }
+
+    public void setLogs(List<Log> logs) {
+        this.logs = logs;
     }
 
     @Override
