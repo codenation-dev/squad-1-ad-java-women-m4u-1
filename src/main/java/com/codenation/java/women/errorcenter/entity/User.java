@@ -1,4 +1,6 @@
 package com.codenation.java.women.errorcenter.entity;
+
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,14 +13,12 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "users")
+@Data
 public class User implements UserDetails {
 
     @Id
@@ -42,45 +42,12 @@ public class User implements UserDetails {
     @CreatedDate
     private LocalDateTime createdAt;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "users")
-    private Set<Application> applications = new HashSet<>();
-
-    public Long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    @ManyToMany
+    private List<Application> applications;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ADMIN"));
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     @Override
@@ -108,49 +75,14 @@ public class User implements UserDetails {
         return true;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Set<Application> getApplications() {
-        return applications;
-    }
-
-    public void setApplications(Set<Application> applications) {
-        this.applications = applications;
-    }
-
     public User() {
     }
 
-    public User(String name, String email, String password, LocalDateTime createdAt, Set<Application> applications) {
-
+    public User(String name, String email, String password, LocalDateTime createdAt, List<Application> applications) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.createdAt = createdAt;
         this.applications = applications;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(user_id, user.user_id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(user_id);
-    }
-
 }
