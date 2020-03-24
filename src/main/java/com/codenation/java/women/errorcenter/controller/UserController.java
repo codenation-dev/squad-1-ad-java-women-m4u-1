@@ -1,19 +1,14 @@
 package com.codenation.java.women.errorcenter.controller;
 
-import com.codenation.java.women.errorcenter.dto.MessageDTO;
-import com.codenation.java.women.errorcenter.dto.UserDTO;
 import com.codenation.java.women.errorcenter.entity.User;
 import com.codenation.java.women.errorcenter.service.interfaces.UserServiceInterface;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.modelmapper.ModelMapper;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class UserController {

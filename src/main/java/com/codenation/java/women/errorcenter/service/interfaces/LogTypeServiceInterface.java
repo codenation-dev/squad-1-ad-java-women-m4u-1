@@ -1,8 +1,6 @@
 package com.codenation.java.women.errorcenter.service.interfaces;
 
-import com.codenation.java.women.errorcenter.dto.LogTypeDTO;
 import com.codenation.java.women.errorcenter.entity.LogType;
-import com.codenation.java.women.errorcenter.entity.User;
 
 import java.util.List;
 import java.util.Optional;
