@@ -4,7 +4,6 @@ import com.codenation.java.women.errorcenter.entity.Application;
 import com.codenation.java.women.errorcenter.entity.Log;
 import com.codenation.java.women.errorcenter.entity.User;
 
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
