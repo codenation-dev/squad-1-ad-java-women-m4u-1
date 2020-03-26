@@ -11,6 +11,8 @@ import java.util.List;
 public class ApplicationDTO {
 
     private Long id;
+
+    @NotNull(message= "Um id de usuário deve ser informado.")
     private User user_id;
 
     @NotNull(message = "Um nome para a aplicação deve ser informado.")
@@ -22,6 +24,9 @@ public class ApplicationDTO {
     private LocalDateTime createdAt;
     private List<User> users;
     private List<Log> logs;
+
+    public ApplicationDTO(){
+    }
 
     public ApplicationDTO(Application application) {
         this.id = id;

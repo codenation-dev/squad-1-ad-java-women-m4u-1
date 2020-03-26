@@ -59,8 +59,8 @@ class ApplicationController {
 
     @ApiOperation(value = "Altera uma application")
     @ApiResponses({
-            @ApiResponse(code = 200, message = "LogType criada com sucesso", response = ApplicationDTO.class),
-            @ApiResponse(code = 404, message = "LogType não encontrada", response = MessageDTO.class)
+            @ApiResponse(code = 200, message = "Aplicação criada com sucesso", response = ApplicationDTO.class),
+            @ApiResponse(code = 404, message = "Aplicação não encontrada", response = MessageDTO.class)
     })
     @PutMapping("/api/v1/applications/{id}")
     Application updateApplication(@RequestBody ApplicationDTO updatedApplication, @PathVariable Long id) {
