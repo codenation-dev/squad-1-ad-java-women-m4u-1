@@ -49,6 +49,18 @@ public class Application {
     @OneToMany(mappedBy = "appId", cascade = CascadeType.ALL)
     private List<Log> logs;
 
+    public Application() {
+    }
+
+    public Application( User userId, @Size(max = 50) String appName, @Size(max = 200) String description, LocalDateTime createdAt, Set<User> users, List<Log> logs) {
+            this.userId = userId;
+            this.appName = appName;
+            this.description = description;
+            this.createdAt = createdAt;
+            this.users = users;
+            this.logs = logs;
+        }
+
     public Long getId() {
         return id;
     }

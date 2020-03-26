@@ -1,6 +1,7 @@
 package com.codenation.java.women.errorcenter.service.impl;
 
 import com.codenation.java.women.errorcenter.entity.Application;
+import com.codenation.java.women.errorcenter.exception.ApplicationNotFoundException;
 import com.codenation.java.women.errorcenter.repository.ApplicationRepository;
 import com.codenation.java.women.errorcenter.service.interfaces.ApplicationServiceInterface;
 import org.springframework.stereotype.Service;
@@ -55,9 +56,9 @@ public class ApplicationService implements ApplicationServiceInterface {
         if(!application.isPresent()) {
             repository.deleteById(id);
         }
-//        else {
-//            throw  new ApplicationNotFoundException(id);
-//        }
+        else {
+            throw  new ApplicationNotFoundException(id);
+        }
     }
 
     private <T> void setIfNotNull(final Consumer<T> setter, final T value) {

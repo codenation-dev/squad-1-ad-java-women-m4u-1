@@ -3,11 +3,13 @@ package com.codenation.java.women.errorcenter.service.impl;
 import com.codenation.java.women.errorcenter.entity.Log;
 import com.codenation.java.women.errorcenter.repository.LogRepository;
 import com.codenation.java.women.errorcenter.service.interfaces.LogServiceInterface;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+@Service("logService")
 public class LogService implements LogServiceInterface {
 
     private final LogRepository repository;

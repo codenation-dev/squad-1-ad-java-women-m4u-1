@@ -1,6 +1,7 @@
 package com.codenation.java.women.errorcenter.service.impl;
 
 import com.codenation.java.women.errorcenter.entity.User;
+import com.codenation.java.women.errorcenter.exception.UserNotFoundException;
 import com.codenation.java.women.errorcenter.repository.UserRepository;
 import com.codenation.java.women.errorcenter.service.interfaces.UserServiceInterface;
 import org.springframework.stereotype.Service;
@@ -52,9 +53,9 @@ public class UserService implements UserServiceInterface {
         if(!user.isPresent()) {
             repository.deleteById(id);
         }
-//        else {
-//            throw new UserNotFoundException(id);
-//        }
+        else {
+            throw new UserNotFoundException(id);
+        }
     }
 
     private <T, voi> void setIfNotNull(final Consumer<T> setter, final T value) {

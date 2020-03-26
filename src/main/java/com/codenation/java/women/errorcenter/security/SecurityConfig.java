@@ -44,5 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }
 
-
+    @Override
+    public void configure(WebSecurity webSecurity) throws Exception{
+        webSecurity.ignoring().antMatchers("/api/v1/users");
+    }
 }
