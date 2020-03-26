@@ -1,12 +1,16 @@
 package com.codenation.java.women.errorcenter.entity;
-
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -14,7 +18,7 @@ import java.util.Set;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "users")
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +27,6 @@ public class User {
     @Column
     @Size(max = 150)
     private String name;
-
-    @Column
-    @Size(max = 100)
-    private String token;
 
     @Column
     @Email
@@ -65,14 +65,6 @@ public class User {
         this.name = name;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -81,8 +73,38 @@ public class User {
         this.email = email;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("ADMIN"));
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {
@@ -108,9 +130,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, String token, String email, String password, LocalDateTime createdAt, Set<Application> applications) {
+    public User(String name, String email, String password, LocalDateTime createdAt, Set<Application> applications) {
+
         this.name = name;
-        this.token = token;
         this.email = email;
         this.password = password;
         this.createdAt = createdAt;
@@ -129,4 +151,5 @@ public class User {
     public int hashCode() {
         return Objects.hash(user_id);
     }
+
 }
