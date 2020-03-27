@@ -1,7 +1,11 @@
 package com.codenation.java.women.errorcenter.exception;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter @Setter
 public class ExceptionResponse {
 
     private String errorCode;
@@ -9,30 +13,6 @@ public class ExceptionResponse {
     private List<String> errors;
 
     ExceptionResponse() {
-    }
-
-    public String getErrorCode() {
-        return errorCode;
-    }
-
-    void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    String getErrorMessage() {
-        return errorMessage;
-    }
-
-    void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
-
-    void setErrors(List<String> errors) {
-        this.errors = errors;
-    }
-
-    public List<String> getErrors() {
-        return errors;
     }
 }
 

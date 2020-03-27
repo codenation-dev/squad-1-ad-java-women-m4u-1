@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity webSecurity) throws Exception{
         webSecurity.ignoring().antMatchers("/errorcenter/login");
+        webSecurity.ignoring().antMatchers("/api/v1/users");
     }
 
     @Override
@@ -42,10 +43,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
-    }
-
-    @Override
-    public void configure(WebSecurity webSecurity) throws Exception{
-        webSecurity.ignoring().antMatchers("/api/v1/users");
     }
 }
