@@ -7,7 +7,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -18,10 +20,6 @@ public class Application {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User userId;
 
     @Column
     @Size(max = 50)
@@ -36,8 +34,12 @@ public class Application {
     private LocalDateTime createdAt;
 
     @ManyToMany
-    private List<User> users;
+    @JoinTable(name = "users_applications",
+            joinColumns = { @JoinColumn(name = "application_id") },
+            inverseJoinColumns = { @JoinColumn(name = "user_id") })
+    private Set<User> users = new HashSet<>();
 
     @OneToMany
     private List<Log> logs;
 }
+

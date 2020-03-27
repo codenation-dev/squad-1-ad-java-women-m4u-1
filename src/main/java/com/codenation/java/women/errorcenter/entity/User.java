@@ -11,9 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -42,8 +40,8 @@ public class User implements UserDetails {
     @CreatedDate
     private LocalDateTime createdAt;
 
-    @ManyToMany
-    private List<Application> applications;
+    @ManyToMany(mappedBy = "users")
+    private Set<Application> applications = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -78,7 +76,7 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String name, String email, String password, LocalDateTime createdAt, List<Application> applications) {
+    public User(String name, String email, String password, LocalDateTime createdAt, Set<Application> applications) {
         this.name = name;
         this.email = email;
         this.password = password;

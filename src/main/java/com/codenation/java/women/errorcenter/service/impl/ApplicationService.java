@@ -41,7 +41,7 @@ public class ApplicationService implements ApplicationServiceInterface {
                     setIfNotNull(application::setDescription, newApplication.getDescription());
                     setIfNotNull(application::setLogs, newApplication.getLogs());
                     setIfNotNull(application::setUsers, newApplication.getUsers());
-                    setIfNotNull(application::setUserId, newApplication.getUserId());
+                    //setIfNotNull(application::setUserId, newApplication.getUserId());
                     setIfNotNull(application::setCreatedAt, newApplication.getCreatedAt());
 
                     return repository.save(application);
