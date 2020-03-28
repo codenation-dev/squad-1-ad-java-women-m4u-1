@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS applications (
 );
 
 CREATE SEQUENCE application_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -24,7 +23,6 @@ CREATE TABLE IF NOT EXISTS "log_type" (
 );
 
 CREATE SEQUENCE log_type_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -46,7 +44,6 @@ CREATE TABLE IF NOT EXISTS logs (
 );
 
 CREATE SEQUENCE log_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -66,7 +63,6 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE SEQUENCE user_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -86,7 +82,6 @@ CREATE TABLE IF NOT EXISTS users_applications (
 );
 
 CREATE SEQUENCE users_applications_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE

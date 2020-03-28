@@ -16,6 +16,9 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<flyway.user>postgres</flyway.user>
+		<flyway.password>postgres</flyway.password>
+		<flyway.schemas>public</flyway.schemas>
 	</properties>
 
 	<dependencies>
@@ -116,7 +119,7 @@
 					<password>postgres</password>
 					<url>jdbc:postgresql://localhost:5432/error-center</url>
 					<schemas>
-						<schema>error-center</schema>
+						<schema>public</schema>
 					</schemas>
 				</configuration>
 			</plugin>
