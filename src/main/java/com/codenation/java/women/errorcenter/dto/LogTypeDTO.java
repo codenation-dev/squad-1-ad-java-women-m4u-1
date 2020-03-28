@@ -20,7 +20,7 @@ public class LogTypeDTO {
     private String title;
 
     @NotNull(message = "Um nível para o tipo de log deve ser informado.")
-    private String error_level;
+    private String errorLevel;
 
     @NotNull(message = "Uma descrição para o tipo de log deve ser informada.")
     private String description;
@@ -29,7 +29,7 @@ public class LogTypeDTO {
         this.id = id;
         this.log_id = log_id;
         this.title = title;
-        this.error_level = error_level;
+        this.errorLevel = errorLevel;
         this.description = description;
     }
 }

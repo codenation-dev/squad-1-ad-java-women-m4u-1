@@ -68,6 +68,4 @@ class ApplicationController {
                 .map(updatedApplication, Application.class), id)
                 .orElseThrow(() -> new ApplicationNotFoundException(id));
     }
-
-
 }

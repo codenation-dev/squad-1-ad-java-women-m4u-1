@@ -25,7 +25,7 @@ public class LogType {
 
     @Column
     @Size(max = 50)
-    private String error_level;
+    private String errorLevel;
 
     @Column
     @Size(max = 200)

@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -18,7 +19,7 @@ public class Log {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id;
 
     @ManyToOne
     @JoinColumn(name = "applications_id", insertable = false, updatable = false)

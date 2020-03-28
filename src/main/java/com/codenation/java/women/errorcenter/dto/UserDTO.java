@@ -12,7 +12,7 @@ import java.util.List;
 @Getter @Setter
 public class UserDTO {
 
-    private Long user_id;
+    private Long userId;
 
     @NotNull(message = "Um usuario deve ser informado.")
     private String name;
@@ -33,7 +33,7 @@ public class UserDTO {
     }
 
     public UserDTO(User user) {
-        this.user_id = user_id;
+        this.userId = userId;
         this.name = name;
         this.token = token;
         this.email = email;

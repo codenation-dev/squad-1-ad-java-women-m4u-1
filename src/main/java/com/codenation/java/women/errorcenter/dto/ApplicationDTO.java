@@ -16,10 +16,10 @@ public class ApplicationDTO {
     private Long id;
 
     @NotNull(message= "Um id de usuário deve ser informado.")
-    private User user_id;
+    private User userId;
 
     @NotNull(message = "Um nome para a aplicação deve ser informado.")
-    private String app_name;
+    private String appName;
 
     @NotNull(message = "Uma descrição para a aplicação deve ser informada.")
     private String description;
@@ -33,8 +33,8 @@ public class ApplicationDTO {
 
     public ApplicationDTO(Application application) {
         this.id = id;
-        this.user_id = user_id;
-        this.app_name = app_name;
+        this.userId = userId;
+        this.appName = appName;
         this.description = description;
         this.createdAt = createdAt;
         this.users = users;

@@ -23,7 +23,7 @@ public class Application {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User userId;
 
     @Column
