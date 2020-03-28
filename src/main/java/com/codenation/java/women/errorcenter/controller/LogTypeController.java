@@ -69,15 +69,5 @@ public class LogTypeController {
                     .map(logTypeAlterada, LogType.class), id)
                     .orElseThrow(() -> new LogTypeNotFoundException(id));
         }
-
-        @ApiOperation(value = "Remove uma log pelo seu id")
-        @ApiResponses({
-                @ApiResponse(code = 204, message = "LogType removido com sucesso"),
-                @ApiResponse(code = 404, message = "LogType não encontrado", response = MessageDTO.class)
-        })
-        @DeleteMapping("/api/v1/logTypes/{id}")
-        void delete(@PathVariable Long id) {
-            logTypeServiceInterface.deleteByID(id);
-        }
     }
 }
