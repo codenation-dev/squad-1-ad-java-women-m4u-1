@@ -31,8 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity webSecurity) throws Exception{
-        webSecurity.ignoring().antMatchers("/errorcenter/login");
-        webSecurity.ignoring().antMatchers("/api/v1/users");
+        webSecurity.ignoring().antMatchers("/api/v1/users").anyRequest();
     }
 
     @Override
