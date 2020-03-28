@@ -77,4 +77,5 @@ class ApplicationController {
     void delete(@PathVariable Long id) {
         applicationServiceInterface.deleteByID(id);
     }
+
 }
