@@ -57,7 +57,7 @@ class ApplicationController {
         return applicationServiceInterface.save(new ModelMapper().map(application, Application.class));
     }
 
-    @ApiOperation(value = "Altera uma application")
+    @ApiOperation(value = "Altera uma aplicação")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Aplicação criada com sucesso", response = ApplicationDTO.class),
             @ApiResponse(code = 404, message = "Aplicação não encontrada", response = MessageDTO.class)
@@ -67,5 +67,14 @@ class ApplicationController {
         return applicationServiceInterface.update(new ModelMapper()
                 .map(updatedApplication, Application.class), id)
                 .orElseThrow(() -> new ApplicationNotFoundException(id));
+    }
+    @ApiOperation(value = "Remove uma aplicação pelo seu id")
+    @ApiResponses({
+            @ApiResponse(code = 204, message = "Aplicação removida com sucesso"),
+            @ApiResponse(code = 404, message = "Aplicação não encontrada", response = MessageDTO.class)
+    })
+    @DeleteMapping("/api/v1/users/{id}")
+    void delete(@PathVariable Long id) {
+        applicationServiceInterface.deleteByID(id);
     }
 }
