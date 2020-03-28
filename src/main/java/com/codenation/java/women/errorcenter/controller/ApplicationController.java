@@ -73,16 +73,9 @@ class ApplicationController {
             @ApiResponse(code = 204, message = "Aplicação removida com sucesso"),
             @ApiResponse(code = 404, message = "Aplicação não encontrada", response = MessageDTO.class)
     })
-<<<<<<< HEAD
+
     @DeleteMapping("/api/v1/applications/{id}")
     void delete(@PathVariable Long id) {
         applicationServiceInterface.deleteByID(id);
     }
-
-=======
-    @DeleteMapping("/api/v1/users/{id}")
-    void delete(@PathVariable Long id) {
-        applicationServiceInterface.deleteByID(id);
-    }
->>>>>>> f4d488de500d8430eaefbae8d73d8e7e135ccabf
 }
